@@ -19,8 +19,10 @@ public class Floater : MonoBehaviour
     void Update()
     {
         // Float up and down
-        transform.position = new Vector3(transform.position.x,
-                                         startY + (Mathf.Sin((Time.time * moveSpeed) + offset) * moveAmount),
-                                         transform.position.z);
+        transform.position = new Vector3(
+            transform.position.x,
+            startY + (Mathf.Sin((Time.time * moveSpeed) + offset) * moveAmount),
+            transform.position.z
+        );
     }
 }

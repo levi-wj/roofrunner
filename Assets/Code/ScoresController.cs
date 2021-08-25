@@ -97,6 +97,9 @@ public class ScoresController : MonoBehaviour
             case "Credit":
                 changeCredits(1);
                 break;
+            case "Gem":
+                changeCredits(5);
+                break;
             default:
                 Debug.LogError("Itemname was not a valid pickup.");
                 break;

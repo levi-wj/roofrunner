@@ -211,8 +211,6 @@ public class PlayerController : MonoBehaviour
         pauseAnim();
         boxes[0].enabled = false;
         boxes[1].enabled = false;
-        Debug.Log(boxes[0].offset.x);
-        Debug.Log(boxes[1].offset.x);
         StopDive(true);
 
         if (hasRespawned) {

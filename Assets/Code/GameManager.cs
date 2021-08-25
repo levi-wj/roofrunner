@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private TextureScroller[] bgs;
     private PlayerController player;
     private ScoresController scores;
+    private MusicManager music;
     private bool isGamePaused;
 
     private void Start()
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
         scores = FindObjectOfType<ScoresController>();
         bgs = FindObjectsOfType<TextureScroller>();
         player = FindObjectOfType<PlayerController>();
+        music = FindObjectOfType<MusicManager>();
     }
 
     public void pauseGame()
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
         isGamePaused = true;
 
         level.setMoving(false);
+        music.FadeVolume(.2f, .2f);
         setBackgroundScoll(false);
         scores.setIsScoreCounting(false);
         player.setGameGoing(false);
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviour
         level.Restart();
         player.Restart();
         scores.resetScore();
+        music.FadeVolume(1, .5f);
     }
 
     public void save()
@@ -51,6 +55,8 @@ public class GameManager : MonoBehaviour
 
     public void resumeGame()
     {
+        music.FadeVolume(1, .5f);
+        music.PlaySong(1);
         if (DataSaver.seenTutorial) {
             isGamePaused = false;
             player.setTutorial(false);
