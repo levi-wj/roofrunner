@@ -5,7 +5,12 @@ using UnityEngine.Events;
 
 public class Exploder : MonoBehaviour
 {
+    private SoundManager sound = null;
     private UnityAction CB;
+
+    private void Start() {
+        sound = FindObjectOfType<SoundManager>();
+    }
 
     public void SetCB(UnityAction cb)
     {
@@ -19,6 +24,7 @@ public class Exploder : MonoBehaviour
 
     public void KillYourself()
     {
+        sound.PlaySound("explode");
         Destroy(gameObject);
     }
 }

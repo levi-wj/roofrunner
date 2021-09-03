@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Spawner level = null;
     private ParticleSystem particle = null;
 
+    private SoundManager sound = null;
     private GameManager game = null;
     private CameraShake cam = null;
 
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
         game = FindObjectOfType<GameManager>();
         cam = FindObjectOfType<CameraShake>();
+        sound = FindObjectOfType<SoundManager>();
 
         groundLayer = LayerMask.GetMask("Ground");
         level = FindObjectOfType<Spawner>();
@@ -126,6 +128,7 @@ public class PlayerController : MonoBehaviour
                 grounded = false;
                 rb.velocity = Vector2.up * jumpPower;
                 anim.SetTrigger("Jump");
+                sound.PlaySound("hop");
                 jumping = true;
 
                 // Jumpframe institutes delay in checkground()'s raycast, which ensures animation looks right
@@ -187,6 +190,7 @@ public class PlayerController : MonoBehaviour
                 // Instantiate at different positions depending on if the player is sliding
                 Instantiate(bullet, new Vector2(transform.position.x + .3f, transform.position.y + (!sliding ? .1f : -.03f)), transform.rotation);
                 cam.SetCameraShake(.06f, .01f);
+                sound.PlaySound("shot");
 
                 if (!sliding && !tutorial) {
                     shooting = true;
