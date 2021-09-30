@@ -10,6 +10,7 @@ public class Coin : MonoBehaviour
     [SerializeField] int dissapearChance = 5;
 
     private ScoresController score;
+    private SoundCaller sound;
 
     void Start()
     {
@@ -18,12 +19,14 @@ public class Coin : MonoBehaviour
         }
 
         score = FindObjectOfType<ScoresController>();
+        sound = FindObjectOfType<SoundCaller>();
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player") {
             score.doItemCollect(itemName, value);
+            sound.PlaySound(value > 10 ? "largecoin" : "smallcoin" );
             Destroy(gameObject);
         }
     }

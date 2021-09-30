@@ -7,9 +7,6 @@ using System.Text;
 
 public class ScoresController : MonoBehaviour
 {
-    // TODO: Remove
-    public bool cheat = false;
-
     [SerializeField] float scoreSpeed = 1f;
     [SerializeField] bool addZeros = true;
     [SerializeField] Text scoreText = null;
@@ -73,9 +70,6 @@ public class ScoresController : MonoBehaviour
         }
 
         scoreText.text = addLeadingZeros(score.ToString(), 7);
-        if (cheat) {
-            creds += 1;
-        }
 
         checkHighscore();
     }

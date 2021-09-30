@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class Exploder : MonoBehaviour
@@ -10,6 +8,7 @@ public class Exploder : MonoBehaviour
 
     private void Start() {
         sound = FindObjectOfType<SoundManager>();
+        sound.PlaySound("explode");
     }
 
     public void SetCB(UnityAction cb)
@@ -24,7 +23,6 @@ public class Exploder : MonoBehaviour
 
     public void KillYourself()
     {
-        sound.PlaySound("explode");
         Destroy(gameObject);
     }
 }

@@ -151,6 +151,7 @@ public class PlayerController : MonoBehaviour
             sliding = true;
             diveCollider.enabled = true;
             standingCollider.enabled = false;
+            sound.StartLoop("grind");
             particle.Play();
 
             anim.SetTrigger("Slide");
@@ -164,6 +165,7 @@ public class PlayerController : MonoBehaviour
             sliding = false;
             standingCollider.enabled = true;
             diveCollider.enabled = false;
+            sound.EndLoop();
             particle.Stop();
 
             rb.gravityScale = 1f;
@@ -242,6 +244,7 @@ public class PlayerController : MonoBehaviour
         transform.position = respawnPos;
         boxes[1].enabled = true;
         rb.bodyType = RigidbodyType2D.Static;
+        sound.PlaySound("respawn");
 
         // Get rid of all the drones
         Drone[] drones = FindObjectsOfType<Drone>();
