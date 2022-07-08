@@ -30,7 +30,7 @@ public class TouchManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     }
 
     public void OnPointerUp(PointerEventData eventData)
-    {
+    { 
         if (CheckIfTouchIsLeftSide(eventData.pointerCurrentRaycast.screenPosition)) {
             if (CheckIfTouchIsBottomHalf(eventData.pointerCurrentRaycast.screenPosition)) {
                 player.StopDive(false);
